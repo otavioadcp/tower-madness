@@ -49,7 +49,8 @@ script = ExtResource("1_gobw1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_qb83i")
-frame_progress = 0.104114
+autoplay = "default"
+frame_progress = 0.86707
 
 [node name="Hitbox" type="Area2D" parent="."]
 script = ExtResource("2_sjj0j")

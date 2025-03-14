@@ -1,13 +1,20 @@
-[gd_scene load_steps=6 format=4 uid="uid://b0sfn1swofia0"]
+[gd_scene load_steps=8 format=4 uid="uid://b0sfn1swofia0"]
 
 [ext_resource type="TileSet" uid="uid://dv7gfc02baf20" path="res://Tilesets/terrain.tres" id="1_6og2w"]
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_xnmfr"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_db1cf"]
 [ext_resource type="Texture2D" uid="uid://dx5mtlsh81kcu" path="res://assets/environment/decorations/spr_mushroom_01.png" id="2_vcu4m"]
-[ext_resource type="PackedScene" uid="uid://cqejulaqpckp0" path="res://scenes/core/wave_manager.tscn" id="3_lxfcc"]
-[ext_resource type="PackedScene" uid="uid://btsll5vebc84q" path="res://scenes/core/enemy_factory.tscn" id="5_8wmjb"]
+[ext_resource type="PackedScene" uid="uid://cqejulaqpckp0" path="res://scenes/core/wave_manager.tscn" id="3_ycciv"]
+[ext_resource type="Script" path="res://scenes/path_follow_2d.gd" id="5_22vu3"]
+[ext_resource type="PackedScene" uid="uid://btsll5vebc84q" path="res://scenes/core/enemy_factory.tscn" id="5_uds6w"]
+
+[sub_resource type="Curve2D" id="Curve2D_07je1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 14, 40, 0, 0, 0, 0, 14, 40, 0, 0, 0, 0, 534, 38, 0, 0, 0, 0, 535, 118, 0, 0, 0, 0, 39, 120, 0, 0, 0, 0, 38, 200, 0, 0, 0, 0, 531, 202, 0, 0, 0, 0, 535, 301, 0, 0, 0, 0, 347, 279, 0, 0, 0, 0, 206, 253, 0, 0, 0, 0, 115, 258)
+}
+point_count = 11
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_xnmfr")
+script = ExtResource("1_db1cf")
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -35,9 +42,20 @@ position = Vector2(431, 265)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_vcu4m")
 
-[node name="Wave manager" parent="." node_paths=PackedStringArray("enemy_factory") instance=ExtResource("3_lxfcc")]
-position = Vector2(36, 41)
+[node name="Wave manager" parent="." node_paths=PackedStringArray("enemy_factory") instance=ExtResource("3_ycciv")]
+position = Vector2(120, 120)
 enemy_factory = NodePath("../EnemyFactory")
 
-[node name="EnemyFactory" parent="." instance=ExtResource("5_8wmjb")]
-position = Vector2(-13, 14)
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_07je1")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(428.857, 118.428)
+rotation = 3.13756
+progress = 706.16
+rotates = false
+loop = false
+script = ExtResource("5_22vu3")
+
+[node name="EnemyFactory" parent="." instance=ExtResource("5_uds6w")]
+position = Vector2(-1, 38)

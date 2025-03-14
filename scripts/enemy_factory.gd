@@ -1,18 +1,18 @@
 class_name EnemyFactory extends Node
 
-@export var enemy_scenes: Array[PackedScene]
+@onready var enemy_scenes: Dictionary = {
+	"bat": { 
+		"scene": preload("res://scenes/enemies/bat.tscn")
+	}
+}
 
 func create_enemy(type: String, difficulty: float) -> Enemy:
-	var enemy_scene = enemy_scenes.find(func(e): return e.resource_name == type)
-	if enemy_scene == null:
+	var enemy_scene = enemy_scenes[type];
+	if enemy_scene == null || enemy_scene.scene == null:
 		push_error("Enemy type not found: " + type)
 		return null
 
-	var enemy = enemy_scene.instantiate()
-	
-	# Ajustando atributos com base na dificuldade
-	enemy.health *= difficulty
-	enemy.speed *= difficulty
-	enemy.damage *= difficulty
+	var enemy = enemy_scene.scene.instantiate()
+	enemy.level = difficulty;
 	
 	return enemy
