@@ -1,4 +1,4 @@
-class_name Enemy extends Node2D
+class_name Enemy extends Node
 
 @export var health: float
 @export var damage: float

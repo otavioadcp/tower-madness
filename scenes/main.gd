@@ -11,6 +11,7 @@ var waves = [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	wave_manager.wave_data = waves;
+	
 	var button = Button.new()
 	button.text = "Click me"
 	button.pressed.connect(wave_manager.start_wave)

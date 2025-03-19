@@ -1,5 +1,9 @@
 class_name EnemyFactory extends Node
 
+
+# Solução inicial para conseguir criar de forma dinamica e fácil.
+# TODO: Encontrar uma forma de receber diretamente um array de {name: string, scene: PackadScene}
+# Para tirar a responsabilidade da factory de saber as scenes, e passar para quem esta criando o wave manager
 @onready var enemy_scenes: Dictionary = {
 	"bat": { 
 		"scene": preload("res://scenes/enemies/bat.tscn")
