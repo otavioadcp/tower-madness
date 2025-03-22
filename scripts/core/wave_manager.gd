@@ -20,10 +20,11 @@ func start_wave():
 
 # Função que gera uma onda de inimigos
 func spawn_wave(wave_index: int):
+	
+	#Caso ja tenha acabado as waves, o botao nao faz nada.
 	if wave_index >= wave_data.size():
-		print("Fim do jogo! Todas as ondas concluídas.")
-		is_spawning = false
-		return;  # Se todas as ondas foram concluídas, sai da função
+		print("Todas as ondas concluídas!")
+		return;
 
 	# Obtemos os dados da onda (tipos de inimigos e quantidades)
 	var wave = wave_data[wave_index]
@@ -36,6 +37,8 @@ func spawn_wave(wave_index: int):
 			await get_tree().create_timer(spawn_delay).timeout
 
 	current_wave += 1
+	is_spawning = false
+	
 
 # Função para criar um inimigo
 func spawn_enemy(type: String):

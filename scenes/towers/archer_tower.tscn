@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://345ysc77mehp"]
+
+[ext_resource type="Script" path="res://scripts/towers/archer_tower.gd" id="1_0xdae"]
+[ext_resource type="Texture2D" uid="uid://bx7yix5vq3odo" path="res://assets/towers/spr_tower_archer.png" id="1_1y5j1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0ktb"]
+size = Vector2(14, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tiwuj"]
+radius = 61.0082
+
+[node name="ArcherTower" type="StaticBody2D"]
+script = ExtResource("1_0xdae")
+
+[node name="body" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_g0ktb")
+
+[node name="Aim" type="Marker2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="tower_sprt" type="Sprite2D" parent="."]
+texture = ExtResource("1_1y5j1")
+
+[node name="Tower" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower"]
+shape = SubResource("CircleShape2D_tiwuj")
+
+[node name="Bullet container" type="Node2D" parent="."]
+
+[connection signal="body_entered" from="Tower" to="." method="_on_tower_body_entered"]
+[connection signal="body_exited" from="Tower" to="." method="_on_tower_body_exited"]

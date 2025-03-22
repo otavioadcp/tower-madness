@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://df8okfctentd4"]
+
+[ext_resource type="Texture2D" uid="uid://lqlp5kgbttrd" path="res://assets/bullets/spr_tower_archer_projectile.png" id="1_7iwi2"]
+[ext_resource type="Script" path="res://scripts/bullets/arrow.gd" id="1_idls3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dvhu"]
+radius = 4.0
+height = 21.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hiqp3"]
+radius = 5.0
+height = 24.0
+
+[node name="Arrow" type="CharacterBody2D"]
+script = ExtResource("1_idls3")
+
+[node name="SprTowerArcherProjectile" type="Sprite2D" parent="."]
+texture = ExtResource("1_7iwi2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2dvhu")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hiqp3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

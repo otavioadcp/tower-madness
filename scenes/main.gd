@@ -12,7 +12,6 @@ var waves = [
 func _ready() -> void:
 	wave_manager.wave_data = waves;
 	
-	var button = Button.new()
-	button.text = "Click me"
-	button.pressed.connect(wave_manager.start_wave)
-	add_child(button)
+	var start_button = get_node("Wave button");
+	
+	start_button.pressed.connect(wave_manager.start_wave)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://msa2l1b0wm0x"]
+[gd_scene load_steps=9 format=3 uid="uid://msa2l1b0wm0x"]
 
 [ext_resource type="Texture2D" uid="uid://c30yfgnqi3xbr" path="res://assets/enemies/spr_bat.png" id="1_b5j4q"]
 [ext_resource type="Script" path="res://scripts/enemies/bat.gd" id="1_gobw1"]
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="2_sjj0j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0pt2"]
 atlas = ExtResource("1_b5j4q")
@@ -41,9 +40,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1mpc"]
-size = Vector2(8, 6)
+size = Vector2(9, 8)
 
-[node name="Bat" type="Node2D"]
+[node name="Bat" type="CharacterBody2D"]
 script = ExtResource("1_gobw1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -52,9 +51,6 @@ sprite_frames = SubResource("SpriteFrames_qb83i")
 autoplay = "default"
 frame_progress = 0.86707
 
-[node name="Hitbox" type="Area2D" parent="."]
-script = ExtResource("2_sjj0j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_r1mpc")
