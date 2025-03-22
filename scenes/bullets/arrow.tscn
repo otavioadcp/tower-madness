@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://df8okfctentd4"]
 
 [ext_resource type="Texture2D" uid="uid://lqlp5kgbttrd" path="res://assets/bullets/spr_tower_archer_projectile.png" id="1_7iwi2"]
-[ext_resource type="Script" path="res://scripts/bullets/arrow.gd" id="1_idls3"]
+[ext_resource type="Script" uid="uid://co264c302ic8f" path="res://scripts/bullets/arrow.gd" id="1_idls3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dvhu"]
 radius = 4.0
